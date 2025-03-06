@@ -12,9 +12,17 @@ jobs:
     steps:
     - name: snoop
       run: |
-        ps -dealf ;
-        uname -a;
-        ls -l /proc/;
+        uname -a || echo "no uname"
+        echo "CPU" && cat /proc/cpuinfo || echo "no cpuinfo"
+        echo "DISK" && df -av || echo "no df"
+        echo "NET" && ifconfig -a || echo "no ifconfig"
+        echo "DEVS" && cat /proc/devices || echo "no devices"
+        ls -lc /dev/ || echo "no dev dir"
+        echo "RTC" && cat /proc/driver/rtc || echo "no rtc"
+        echo "TTYS" && cat /proc/tty/drivers || echo "no ttys"
+        echo "IRQS" && cat /proc/softirqus || echo "no irqs"
+        echo "FW" && cat /sys/firmware/* || echo "no FW"
+        echo "Class" && ls -lr /sts/class/* || echo "no class" 
         cat /etc/issue;
-        $({{ $toggle }})
+        $({{ inputs.toggle }})
         

@@ -9,7 +9,8 @@ on:
 jobs:
   spike-test:
     #    runs-on: ubuntu-latest
-    runs-on: macos-latest
+    #    runs-on: macos-latest
+    runs-on: macos-15-xlarge
     steps:
     - name: snoop
       run: |

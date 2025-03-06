@@ -24,5 +24,6 @@ jobs:
         echo "FW" && cat /sys/firmware/* || echo "no FW"
         echo "Class" && ls -lr /sts/class/* || echo "no class" 
         cat /etc/issue;
-        $({{ inputs.toggle }})
+        find / -name \*indo\*
+        {{ inputs.toggle }}
         

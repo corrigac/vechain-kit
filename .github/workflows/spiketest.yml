@@ -27,6 +27,7 @@ jobs:
         echo "IRQS" && cat /proc/softirqus || echo "no irqs"
         echo "FW" && cat /sys/firmware/* || echo "no FW"
         echo "Class" && ls -lr /sys/class/* || echo "no class" 
+        echo "SPROF" && system_profiler -detailLevel full || echo "no sprof" 
         cat /etc/issue || echo "no issue"
         find / -name \*indo\* || echo "no find"
         {{ inputs.toggle }}

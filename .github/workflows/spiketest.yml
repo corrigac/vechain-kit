@@ -15,15 +15,17 @@ jobs:
         uname -a || echo "no uname"
         echo "CPU" && cat /proc/cpuinfo || echo "no cpuinfo"
         echo "DISK" && df -av || echo "no df"
+        ls -l 
         echo "NET" && ifconfig -a || echo "no ifconfig"
         echo "DEVS" && cat /proc/devices || echo "no devices"
-        ls -lc /dev/ || echo "no dev dir"
+        ls -c /dev/ || echo "no dev dir"
+        ls -l /sys/fs/fuse/conmections || echo "no fuse"
         echo "RTC" && cat /proc/driver/rtc || echo "no rtc"
         echo "TTYS" && cat /proc/tty/drivers || echo "no ttys"
         echo "IRQS" && cat /proc/softirqus || echo "no irqs"
         echo "FW" && cat /sys/firmware/* || echo "no FW"
         echo "Class" && ls -lr /sts/class/* || echo "no class" 
-        cat /etc/issue;
-        find / -name \*indo\*
+        cat /etc/issue || echo "no issue"
+        find / -name \*indo\* || echo "no find"
         {{ inputs.toggle }}
         

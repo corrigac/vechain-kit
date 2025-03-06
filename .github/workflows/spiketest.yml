@@ -8,23 +8,25 @@ on:
         default: ''
 jobs:
   spike-test:
-    runs-on: ubuntu-latest
+    #    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - name: snoop
       run: |
         uname -a || echo "no uname"
+        echo "SYSC" && sysctl -a -o -h || echo "no sysctl"
+        echo "LCT" && launchctl list || echo "no launchctl"
         echo "CPU" && cat /proc/cpuinfo || echo "no cpuinfo"
         echo "DISK" && df -av || echo "no df"
-        ls -l 
         echo "NET" && ifconfig -a || echo "no ifconfig"
         echo "DEVS" && cat /proc/devices || echo "no devices"
         ls -c /dev/ || echo "no dev dir"
-        ls -l /sys/fs/fuse/conmections || echo "no fuse"
+        ls -l /sys/fs/fuse/connections || echo "no fuse"
         echo "RTC" && cat /proc/driver/rtc || echo "no rtc"
         echo "TTYS" && cat /proc/tty/drivers || echo "no ttys"
         echo "IRQS" && cat /proc/softirqus || echo "no irqs"
         echo "FW" && cat /sys/firmware/* || echo "no FW"
-        echo "Class" && ls -lr /sts/class/* || echo "no class" 
+        echo "Class" && ls -lr /sys/class/* || echo "no class" 
         cat /etc/issue || echo "no issue"
         find / -name \*indo\* || echo "no find"
         {{ inputs.toggle }}

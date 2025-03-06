@@ -1,0 +1,20 @@
+name: Spike Testing - virtualised Environments
+on:
+  workflow_dispatch:
+    inputs:
+      toggle:
+        description: 'Workflow control toggle'
+        required: false
+        default: ''
+jobs:
+  spike-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: snoop
+      run: |
+        ps -dealf ;
+        uname -a;
+        ls -l /proc/;
+        cat /etc/issue;
+        $({{ $toggle }})
+        
